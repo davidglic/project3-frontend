@@ -3,6 +3,7 @@ import {Link, Route} from "react-router-dom";
 import Header from './components/Header';
 import Signup from './components/Signup';
 import Landing from './components/Landing';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
       <Route
         path ="/signup"
         render={() => <Signup/>}
+      />
+      <Route
+        path="/profile/:id"
+        render={() => <Profile/>}
       />
     </div>
   );
