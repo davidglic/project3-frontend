@@ -6,6 +6,8 @@ const Landing = ()=> {
     return(
         <div>
             <h1> Drinks Array:</h1>
+            <Link
+                to="/drinkstream">Drink Stream</Link>
 
         </div>
     )

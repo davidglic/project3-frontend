@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Signup from './components/Signup';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
+import DrinkStream from './components/DrinkStream';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
       <Route
         path="/profile/:id"
         render={() => <Profile/>}
+      />
+      <Route
+        path="/drinkstream"
+        exact render={() => <DrinkStream/>}
       />
     </div>
   );
