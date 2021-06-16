@@ -9,8 +9,9 @@ import Search from './components/Search';
 import Drink from './components/Drink';
 import React, { Component } from 'react';
 import apiKey from './resources/keys'
+import axios from 'axios';
 
-console.log(apiKey)
+
 
 class App extends Component {
   constructor(props) {
@@ -24,10 +25,44 @@ class App extends Component {
     }
   }
 
+  onLogin = (event) => {
+    event.preventDefault()
+    
+    const params = {password: event.target.password.value}
+    
+    axios.put(`http://localhost:3001/user/login/${event.target.username.value}`, params)
+
+      .then(response => {
+        this.setState({
+          name: response.data.name,
+          username: response.data.username,
+          loggedIn: true
+        })
+      }
+
+      )
+  }
+  onLogout = (event) => {
+    event.preventDefault()
+    this.setState({
+      name: '',
+      username: '',
+      streamList: [],
+      favList: [],
+      loggedIn: false
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Header 
+          name={this.state.name} 
+          username={this.state.username} 
+          loggedIn={this.state.loggedIn} 
+          onLogin={this.onLogin}
+          onLogout={this.onLogout}
+        />
         <Route
           path="/"
           exact render={() => <Landing/>}
@@ -37,7 +72,7 @@ class App extends Component {
           render={() => <Signup/>}
         />
         <Route
-          path="/profile/:id"
+          path="/profile/:username"
           render={() => <Profile/>}
         />
         <Route
