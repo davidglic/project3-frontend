@@ -52,6 +52,13 @@ class App extends Component {
       loggedIn: false
     })
   }
+  updateState = (username, name) => {
+    this.setState({
+      username: username,
+      name: name,
+      loggedIn: true
+    })
+  }
 
   render() {
     return (
@@ -69,7 +76,7 @@ class App extends Component {
         />
         <Route
           path ="/signup"
-          render={() => <Signup/>}
+          render={(props) => <Signup username={this.state.username} loggedIn={this.state.loggedIn} {...props} updateState={this.updateState}/>}
         />
         <Route
           path="/profile/:username"
