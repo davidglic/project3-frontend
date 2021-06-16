@@ -19,3 +19,36 @@
   padding: 5px;
   margin: 5px;
 }
+.ingredientContainer {
+  margin-left: 30px;
+  margin-right:  30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border: 1px solid black;
+  width: 40%;
+}
+.instructionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  justify-content: left;
+  border: 1px solid black;
+}
+li{
+  list-style-type: none;
+}
+h3 {
+  text-align: left;
+  margin-bottom: 0;
+  margin-left: 36px;
+}
+.ingredients {
+  margin-top: 2px;
+  text-align: left;
+}
+.instructions {
+  margin-top: 2px;
+  text-align: left;
+  margin-left: 36px;
+}
