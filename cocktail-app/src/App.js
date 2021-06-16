@@ -85,7 +85,7 @@ class App extends Component {
         />
         <Route
           path="/drink/:id"
-          render={() => <Drink/>}
+          render={(props) => <Drink {...props}/>}
         />
       </div>
     );

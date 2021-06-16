@@ -1,31 +1,43 @@
 import React, {Component} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import DrinkStream from "./DrinkStream";
 
 class Drink extends Component {
     constructor (props) {
         super (props)
 
         this.state= {
-            drink:[]
+            drink:[],
+            recievedDrink: false
         }
 
     }
     componentDidMount = () => {
-        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007`)
+        console.log(this.props)
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.props.match.params.id}`)
         .then(response => {
+            console.log(response.data)
             this.setState({
-                drink:response.data.drink
+                drink:response.data.drinks[0],
+                recievedDrink:true
             })
         })
     }
 
 
     render () {
+        console.log(this.state.drink)
     return (
         <div>
-            <h1>Drinks:</h1> 
+            {this.state.recievedDrink &&
+            <div>
+                {this.state.drink.strDrink} <br></br>
+                {this.state.drink.strIngredient1}
+                {this.state.drink.strIngredient4}
 
+            </div>
+            }
         </div>
     )
 }
