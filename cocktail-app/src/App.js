@@ -7,37 +7,55 @@ import Profile from './components/Profile';
 import DrinkStream from './components/DrinkStream';
 import Search from './components/Search';
 import Drink from './components/Drink';
+import React, { Component } from 'react';
+import apiKey from './resources/keys'
 
-function App() {
-  return (
-    <div className="App">
-      <Header/>
-      <Route
-        path="/"
-        exact render={() => <Landing/>}
-      />
-      <Route
-        path ="/signup"
-        render={() => <Signup/>}
-      />
-      <Route
-        path="/profile/:id"
-        render={() => <Profile/>}
-      />
-      <Route
-        path="/drinkstream"
-        render={() => <DrinkStream/>}
-      />
-            <Route
-        path="/search"
-        render={() => <Search/>}
-      />
-      <Route
-        path="/drink/:id"
-        render={() => <Drink/>}
-      />
-    </div>
-  );
+console.log(apiKey)
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      username: '',
+      streamList: [],
+      favList: [],
+      loggedIn: false
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header/>
+        <Route
+          path="/"
+          exact render={() => <Landing/>}
+        />
+        <Route
+          path ="/signup"
+          render={() => <Signup/>}
+        />
+        <Route
+          path="/profile/:id"
+          render={() => <Profile/>}
+        />
+        <Route
+          path="/drinkstream"
+          render={() => <DrinkStream/>}
+        />
+              <Route
+          path="/search"
+          render={() => <Search/>}
+        />
+        <Route
+          path="/drink/:id"
+          render={() => <Drink/>}
+        />
+      </div>
+    );
+  }
+   
 }
 
 export default App;
