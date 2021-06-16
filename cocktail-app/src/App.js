@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       name: '',
       username: '',
-      streamList: [],
+      drinkList: [],
       favList: [],
       loggedIn: false
     }
@@ -47,7 +47,7 @@ class App extends Component {
     this.setState({
       name: '',
       username: '',
-      streamList: [],
+      drinkList: [{idDrink: '', strDrinkThumb: '', strDrink: 'Loading...'}],
       favList: [],
       loggedIn: false
     })
@@ -58,6 +58,16 @@ class App extends Component {
       name: name,
       loggedIn: true
     })
+  }
+
+  searchDrinks = (string) => {
+         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${string}`)
+        .then(response => {
+          console.log(response.data.drinks)
+            this.setState({
+                drinkList:response.data.drinks
+            })
+        })
   }
 
   render() {
@@ -72,7 +82,12 @@ class App extends Component {
         />
         <Route
           path="/"
-          exact render={() => <Landing/>}
+          exact render={() => 
+          <div> 
+          <Landing searchDrinks={this.searchDrinks}/>
+          <DrinkStream drinkList={this.state.drinkList}/> 
+          </div> 
+        }
         />
         <Route
           path ="/signup"
@@ -82,10 +97,10 @@ class App extends Component {
           path="/profile/:username"
           render={() => <Profile/>}
         />
-        <Route
+        {/* <Route
           path="/drinkstream"
-          render={() => <DrinkStream/>}
-        />
+          render={() => <DrinkStream drinkList={this.state.drinkList}/>}
+        /> */}
               <Route
           path="/search"
           render={() => <Search/>}

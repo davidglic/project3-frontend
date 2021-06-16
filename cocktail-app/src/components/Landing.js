@@ -3,20 +3,19 @@ import {Link} from "react-router-dom";
 // import axios from "axios";
 
 class Landing extends Component {
-    constructor () {
-        super ()
+    constructor (props) {
+        super (props)
 
     }
 
-
+    componentDidMount() {
+        this.props.searchDrinks("margarita")
+    }
     render () {
     return (
         <div>
-            <h1> Drink Stream:</h1> 
-            <Link
-                to="/drinkstream">Drink Stream</Link>
-          
-
+            <h1> Welcome To Drink Stream:</h1> 
+        
         </div>
     )
 }

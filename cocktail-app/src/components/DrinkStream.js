@@ -3,8 +3,8 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 
 class DrinkStream extends Component {
-    constructor () {
-        super ()
+    constructor (props) {
+        super (props)
         
         this.state = {
             drinks:[]
@@ -12,27 +12,27 @@ class DrinkStream extends Component {
 
     }
 
-    componentDidMount = () => {
-        axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-        .then(response => {
-            this.setState({
-                drinks:response.data.drinks
-            })
-        })
-    }
+    // componentDidMount = () => {
+    //     axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+    //     .then(response => {
+    //         this.setState({
+    //             drinks:response.data.drinks
+    //         })
+    //     })
+    // }
 
 
     render () {
         console.log(this.state.drinks)
     return (
         <div>
-            <h1> Margaritas</h1> 
+            <h1> Drinks</h1> 
             <Link
                 to="/search">Search</Link> 
             <Link
                 to="/drink/:id">Drink:</Link>
             <div className="container">
-                {this.state.drinks.map(drinks => {
+                {this.props.drinkList.map(drinks => {
                      return (
             <Link
                 to={`/drink/${drinks.idDrink}`}>
