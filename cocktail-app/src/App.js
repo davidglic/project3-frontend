@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import Profile from './components/Profile';
 import DrinkStream from './components/DrinkStream';
 import Search from './components/Search';
+import Drink from './components/Drink';
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
             <Route
         path="/search"
         render={() => <Search/>}
+      />
+      <Route
+        path="/drink/:id"
+        render={() => <Drink/>}
       />
     </div>
   );
