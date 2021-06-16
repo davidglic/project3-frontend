@@ -10,3 +10,12 @@
   margin-right: 100px;
   margin-top: 10px;
 }
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.each {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+}

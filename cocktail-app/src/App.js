@@ -10,7 +10,6 @@ import Drink from './components/Drink';
 import React, { Component } from 'react';
 import apiKey from './resources/keys'
 
-console.log(apiKey)
 
 class App extends Component {
   constructor(props) {
