@@ -1,5 +1,5 @@
 import './App.css';
-import {Link, Route} from "react-router-dom";
+import {Link, Route, withRouter} from "react-router-dom";
 import Header from './components/Header';
 import Signup from './components/Signup';
 import Landing from './components/Landing';
@@ -10,6 +10,8 @@ import Drink from './components/Drink';
 import React, { Component } from 'react';
 import apiKey from './resources/keys'
 import axios from 'axios';
+
+
 
 
 
@@ -51,6 +53,7 @@ class App extends Component {
       favList: [],
       loggedIn: false
     })
+    this.props.history.push('/')
   }
   updateState = (username, name) => {
     this.setState({
@@ -79,6 +82,7 @@ class App extends Component {
           loggedIn={this.state.loggedIn} 
           onLogin={this.onLogin}
           onLogout={this.onLogout}
+          
         />
         <Route
           path="/"
@@ -121,4 +125,4 @@ class App extends Component {
    
 }
 
-export default App;
+export default withRouter(App);
