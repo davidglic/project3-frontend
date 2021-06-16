@@ -95,7 +95,7 @@ class App extends Component {
         />
         <Route
           path="/profile/:username"
-          render={() => <Profile/>}
+          render={(props) => <Profile {...props} username={this.state.username} updateState={this.updateState}/>}
         />
         {/* <Route
           path="/drinkstream"
