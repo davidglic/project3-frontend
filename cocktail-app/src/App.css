@@ -1,4 +1,12 @@
 .App {
   text-align: center;
 }
-
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-left:  100px;
+}
+.head-right{
+  margin-right: 100px;
+  margin-top: 10px;
+}

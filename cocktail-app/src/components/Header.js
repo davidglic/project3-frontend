@@ -9,8 +9,10 @@ class Header extends Component{
         return (
             <div className="header">
                 <h1 className="title">Cocktail App</h1>
+            <div className="head-right">
                 <Link
                     to="/signup">Sign Up!</Link>
+            </div>
             </div>
         )
     }
