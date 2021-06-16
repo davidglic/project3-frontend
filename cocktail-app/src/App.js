@@ -5,6 +5,7 @@ import Signup from './components/Signup';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
 import DrinkStream from './components/DrinkStream';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -24,7 +25,11 @@ function App() {
       />
       <Route
         path="/drinkstream"
-        exact render={() => <DrinkStream/>}
+        render={() => <DrinkStream/>}
+      />
+            <Route
+        path="/search"
+        render={() => <Search/>}
       />
     </div>
   );

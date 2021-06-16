@@ -12,7 +12,10 @@ class DrinkStream extends Component {
     render () {
     return (
         <div>
-            <h1> DrinkStream:</h1>           
+            <h1> DrinkStream:</h1> 
+            <Link
+                to="/search">Search</Link>
+          
 
         </div>
     )

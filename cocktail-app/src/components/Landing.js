@@ -5,7 +5,7 @@ import axios from "axios";
 const Landing = ()=> {
     return(
         <div>
-            <h1> Drinks Array:</h1>
+            <h1> Main Page:</h1>
             <Link
                 to="/drinkstream">Drink Stream</Link>
 
