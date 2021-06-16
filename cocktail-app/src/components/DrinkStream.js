@@ -26,11 +26,6 @@ class DrinkStream extends Component {
         console.log(this.state.drinks)
     return (
         <div>
-            <h1> Drinks</h1> 
-            <Link
-                to="/search">Search</Link> 
-            <Link
-                to="/drink/:id">Drink:</Link>
             <div className="container">
                 {this.props.drinkList.map(drinks => {
                      return (

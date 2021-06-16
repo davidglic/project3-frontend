@@ -2,9 +2,20 @@ import React,{Component} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 
+
 class Search extends Component {
-    constructor () {
-        super ()
+    constructor (props) {
+        super (props)
+        this.state = {
+            searchBar: ''
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+        
     }
 
     render () {
@@ -13,11 +24,18 @@ class Search extends Component {
             <h1> Search:</h1>
             <input
                     type="text"
-                    name="search"
-                    placeholder="search"/>  
+                    name="searchBar"
+                    value={this.state.searchBar}
+                    placeholder="search"
+                    onChange={this.handleChange}/>  
                 <input
                     type="submit"
-                    value="Search!"/>
+                    value="Search!"
+                    onClick={() => this.props.searchDrinks(this.state.searchBar)}
+                    />
+                    
+
+        <div>Search Results:</div>
         </div>
     )
 }

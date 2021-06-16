@@ -103,11 +103,17 @@ class App extends Component {
         /> */}
               <Route
           path="/search"
-          render={() => <Search/>}
+          render={(props) => 
+          <div>
+          <Search {...props} searchDrinks={this.searchDrinks}/>
+          <DrinkStream drinkList={this.state.drinkList}/> 
+          </div>
+          }
         />
         <Route
           path="/drink/:id"
-          render={(props) => <Drink {...props}/>}
+          render={(props) => <Drink {...props}/>
+        }
         />
       </div>
     );
