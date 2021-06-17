@@ -14,20 +14,28 @@ class Drink extends Component {
 
     }
     componentDidMount = () => {
-        console.log(this.props)
+        
         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.props.match.params.id}`)
         .then(response => {
-            console.log(response.data)
+            
             this.setState({
                 drink:response.data.drinks[0],
                 recievedDrink:true
             })
         })
     }
-
+    checkFavs = (id) => {
+        
+        for (let i=0; i < this.props.favList.length; i++) {
+            
+            if (this.props.favList[i].drinkID == id) {return true}
+        }
+        return false
+    }
 
     render () {
-        console.log(this.state.drink)
+        
+        
     return (
     <div>
         {this.state.recievedDrink &&
@@ -125,8 +133,13 @@ class Drink extends Component {
                 <p className="instructions">{this.state.drink.strInstructions}</p>
             </div> 
         </div> 
+
             </div>
             }
+            {this.checkFavs(this.state.drink.idDrink) 
+            ? <button>Remove from Favorites</button>
+            : <button onClick={() => this.props.addFavDrink(this.state.drink.idDrink, this.state.drink.strDrink, this.props.username)}>Add to Favorites</button>}
+            <div>{this.props.username}{this.state.drink.idDrink}{this.state.drink.strDrink}</div>
         </div>
     )
 }

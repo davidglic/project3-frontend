@@ -41,11 +41,13 @@ class Profile extends Component {
     fetchFavorites = () => {
         axios.get(`http://localhost:3001/drink/${this.props.username}`)
         .then(resp => {
-            console.log(resp.data)
+            
             this.setState({
                 favList:resp.data
             })
+            this.props.updateFavs(this.state.favList)
         })
+        
     }
 
     componentDidMount =() => {

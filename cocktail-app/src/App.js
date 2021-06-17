@@ -21,6 +21,7 @@ class App extends Component {
     this.state = {
       name: '',
       username: '',
+      favList: [],
       drinkList: [],
       loggedIn: false
     }
@@ -61,6 +62,27 @@ class App extends Component {
       name: name,
       loggedIn: true
     })
+  }
+
+  updateFavs = (list) => {
+    this.setState({
+      favList: list
+    })
+  }
+
+  addFavDrink = (drinkId, drinkName, userName) => {
+    const newDrink = {name: drinkName, drinkID: drinkId}
+    axios.post(`http://localhost:3001/drink/${userName}`, newDrink)
+      .then(response => {
+        axios.get(`http://localhost:3001/drink/${userName}`)
+        .then(resp => {
+            
+            this.setState({
+                favList:resp.data
+            })
+            
+        })
+      })
   }
 
   searchDrinks = (string) => {
@@ -130,7 +152,7 @@ class App extends Component {
         />
         <Route
           path="/profile/:username"
-          render={(props) => <Profile {...props} username={this.state.username} updateState={this.updateState}/>}
+          render={(props) => <Profile {...props} username={this.state.username} updateState={this.updateState} updateFavs={this.updateFavs}/>}
         />
         {/* <Route
           path="/drinkstream"
@@ -152,7 +174,12 @@ class App extends Component {
         />
         <Route
           path="/drink/:id"
-          render={(props) => <Drink {...props}/>
+          render={(props) => <Drink 
+          username={this.state.username}
+          {...props} 
+          favList={this.state.favList}
+          addFavDrink={this.addFavDrink}
+          />
         }
         />
       </div>
