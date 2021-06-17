@@ -21,7 +21,7 @@ class Signup extends Component{
         }
         axios.get(`http://localhost:3001/user/${event.target.username.value}`)
             .then(resp => {
-                if (resp = null) {
+                if (resp.data === null) {
                     const newUser = {
                         name: event.target.name.value,
                         username: event.target.username.value,
