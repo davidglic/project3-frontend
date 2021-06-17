@@ -64,12 +64,10 @@ class Profile extends Component {
             })
         
     }
-    handleDeleteUser = (event) => {
-        event.preventDefault()
-        axios.delete(`http://localhost:3001/user/${this.props.match.params.id}`)
+    handleDeleteUser = () => {
+        axios.delete(`http://localhost:3001/user/${this.props.username}`)
         .then(() =>{
             this.props.onLogout()
-            this.props.histpry.push('/')
         })
     }
 
@@ -114,11 +112,11 @@ class Profile extends Component {
                     type="submit" 
                     value="Submit Changes" /> <br></br>
             </form>
-            <input 
+            <button
                     className="button-head"
                     type="submit" 
                     value="Delete Profile" 
-                    onClick={this.handleDeleteUser}/>
+                    onClick={this.handleDeleteUser}>Delete User?</button>
         </div>
         <div>
             <form>

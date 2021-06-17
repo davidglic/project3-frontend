@@ -46,7 +46,7 @@ class App extends Component {
       )
   }
   onLogout = (event) => {
-    event.preventDefault()
+    if (event) {event.preventDefault()}
     this.setState({
       name: '',
       username: '',
