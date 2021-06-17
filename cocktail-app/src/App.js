@@ -85,6 +85,21 @@ class App extends Component {
       })
   }
 
+  delFavDrink = (drinkId) => {
+    console.log("delete drink called" + drinkId)
+    axios.delete(`http://localhost:3001/drink/${drinkId}`)
+    .then(response => {
+      axios.get(`http://localhost:3001/drink/${this.state.username}`)
+      .then(resp => {
+          
+          this.setState({
+              favList:resp.data
+          })
+          
+      })
+    })
+  }
+
   searchDrinks = (string) => {
          axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${string}`)
         .then(response => {
@@ -179,6 +194,7 @@ class App extends Component {
           {...props} 
           favList={this.state.favList}
           addFavDrink={this.addFavDrink}
+          delFavDrink={this.delFavDrink}
           />
         }
         />

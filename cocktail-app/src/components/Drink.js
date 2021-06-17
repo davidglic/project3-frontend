@@ -9,7 +9,8 @@ class Drink extends Component {
 
         this.state= {
             drink:[],
-            recievedDrink: false
+            recievedDrink: false,
+            DBid: ''
         }
 
     }
@@ -24,11 +25,15 @@ class Drink extends Component {
             })
         })
     }
+    favID = ''
     checkFavs = (id) => {
         
         for (let i=0; i < this.props.favList.length; i++) {
             
-            if (this.props.favList[i].drinkID == id) {return true}
+            if (this.props.favList[i].drinkID == id) {
+                this.favID = this.props.favList[i].id
+                return true
+            }
         }
         return false
     }
@@ -137,9 +142,9 @@ class Drink extends Component {
             </div>
             }
             {this.checkFavs(this.state.drink.idDrink) 
-            ? <button>Remove from Favorites</button>
+            ? <button onClick={() => this.props.delFavDrink(this.favID)}>Remove from Favorites</button>
             : <button onClick={() => this.props.addFavDrink(this.state.drink.idDrink, this.state.drink.strDrink, this.props.username)}>Add to Favorites</button>}
-            <div>{this.props.username}{this.state.drink.idDrink}{this.state.drink.strDrink}</div>
+            
         </div>
     )
 }
