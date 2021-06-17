@@ -104,18 +104,26 @@ class App extends Component {
          axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${string}`)
         .then(response => {
           // console.log(response.data.drinks)
+          if (response.data.drinks != null) { 
             this.setState({
-                drinkList:response.data.drinks
-            })
+                  drinkList:response.data.drinks
+              })
+          } else {
+            this.setState({drinkList: [{idDrink: '', strDrinkThumb: '', strDrink: 'No drinks found...'}]})
+          }
         })
   }
   searchDrinksLetter = (string) => {
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${string}`)
         .then(response => {
           // console.log(response.data.drinks)
+          if (response.data.drinks != null) { 
             this.setState({
-                drinkList:response.data.drinks
-            })
+                  drinkList:response.data.drinks
+              })
+          } else {
+            this.setState({drinkList: [{idDrink: '', strDrinkThumb: '', strDrink: 'No drinks found...'}]})
+          }
         })
   }
   searchIngredients = (string) => {
@@ -123,9 +131,13 @@ class App extends Component {
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${string}`)
         .then(response => {
           // console.log(response.data.drinks)
+          if (response.data.drinks != null) { 
             this.setState({
-                drinkList:response.data.drinks
-            })
+                  drinkList:response.data.drinks
+              })
+          } else {
+            this.setState({drinkList: [{idDrink: '', strDrinkThumb: '', strDrink: 'No drinks found...'}]})
+          }
         })
 
   }
@@ -135,9 +147,13 @@ class App extends Component {
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(response => {
           // console.log(response.data.drinks)
+          if (response.data.drinks != null) { 
             this.setState({
-                drinkList:response.data.drinks
-            })
+                  drinkList:response.data.drinks
+              })
+          } else {
+            this.setState({drinkList: [{idDrink: '', strDrinkThumb: '', strDrink: 'No drinks found...'}]})
+          }
         })
   }
 
