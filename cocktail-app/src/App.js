@@ -22,7 +22,6 @@ class App extends Component {
       name: '',
       username: '',
       drinkList: [],
-      favList: [],
       loggedIn: false
     }
   }
@@ -73,6 +72,15 @@ class App extends Component {
             })
         })
   }
+  searchDrinksLetter = (string) => {
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${string}`)
+        .then(response => {
+          console.log(response.data.drinks)
+            this.setState({
+                drinkList:response.data.drinks
+            })
+        })
+  }
 
   render() {
     return (
@@ -110,7 +118,10 @@ class App extends Component {
           path="/search"
           render={(props) => 
           <div>
-          <Search {...props} searchDrinks={this.searchDrinks}/>
+          <Search {...props} 
+          searchDrinks={this.searchDrinks}
+          searchDrinksLetter={this.searchDrinksLetter}
+          />
           <DrinkStream drinkList={this.state.drinkList}/> 
           </div>
           }
