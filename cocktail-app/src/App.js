@@ -66,7 +66,7 @@ class App extends Component {
   searchDrinks = (string) => {
          axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${string}`)
         .then(response => {
-          console.log(response.data.drinks)
+          // console.log(response.data.drinks)
             this.setState({
                 drinkList:response.data.drinks
             })
@@ -75,7 +75,29 @@ class App extends Component {
   searchDrinksLetter = (string) => {
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${string}`)
         .then(response => {
-          console.log(response.data.drinks)
+          // console.log(response.data.drinks)
+            this.setState({
+                drinkList:response.data.drinks
+            })
+        })
+  }
+  searchIngredients = (string) => {
+    //www.thecocktaildb.com/api/json/v1/1/filter.php?i
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${string}`)
+        .then(response => {
+          // console.log(response.data.drinks)
+            this.setState({
+                drinkList:response.data.drinks
+            })
+        })
+
+  }
+
+  searchRandom = () => {
+    //www.thecocktaildb.com/api/json/v1/1/random.php
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+        .then(response => {
+          // console.log(response.data.drinks)
             this.setState({
                 drinkList:response.data.drinks
             })
@@ -121,6 +143,8 @@ class App extends Component {
           <Search {...props} 
           searchDrinks={this.searchDrinks}
           searchDrinksLetter={this.searchDrinksLetter}
+          searchRandom={this.searchRandom}
+          searchIngredients={this.searchIngredients}
           />
           <DrinkStream drinkList={this.state.drinkList}/> 
           </div>

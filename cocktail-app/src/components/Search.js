@@ -27,7 +27,8 @@ class Search extends Component {
     constructor (props) {
         super (props)
         this.state = {
-            searchBar: ''
+            searchBar: '',
+            searchIng: ''
         }
     }
 
@@ -60,8 +61,21 @@ class Search extends Component {
                     type="submit"
                     value="Search!"
                     onClick={() => this.props.searchDrinks(this.state.searchBar)}/>
+            <h3>Search by ingredient:</h3>
+            <input  className="button"
+                    type="text"
+                    name="searchIng"
+                    value={this.state.searchIng}
+                    placeholder="search"
+                    onChange={this.handleChange}/>  
+                <input
+                    className="button"
+                    type="submit"
+                    value="Search!"
+                    onClick={() => this.props.searchIngredients(this.state.searchIng)}/>
             <h3>Search by First Letter of Drink:</h3>
             <RenderLetters letterClick={this.letterClick}/>
+            <button value="Random Drink" onClick={this.props.searchRandom}>Random Drink</button>
         </div>
     )
 }
