@@ -40,6 +40,7 @@ class App extends Component {
           username: response.data.username,
           loggedIn: true
         })
+      this.props.history.push(`/profile/${response.data.username}`)
       }
 
       )
