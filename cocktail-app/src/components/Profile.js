@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class Profile extends Component {
     constructor (props) {
@@ -8,7 +9,9 @@ class Profile extends Component {
             name: '',
             username: '',
             password: '',
-            email: ''
+            email: '',
+            drink: '',
+            favList: [],
         }
     }
     
@@ -21,10 +24,10 @@ class Profile extends Component {
         
     }
 
-    componentDidMount() {
-        console.log(this.props.username)
+    fetchProfile = () => {
         axios.get(`http://localhost:3001/user/${this.props.username}`)
             .then(resp => {
+                console.log(resp.data)
                 this.setState({
                     name: resp.data.name,
                     username: resp.data.username,
@@ -33,6 +36,21 @@ class Profile extends Component {
                 })
                 
             })
+    }
+
+    fetchFavorites = () => {
+        axios.get(`http://localhost:3001/drink/${this.props.username}`)
+        .then(resp => {
+            console.log(resp.data)
+            this.setState({
+                favList:resp.data
+            })
+        })
+    }
+
+    componentDidMount =() => {
+        this.fetchProfile();
+        this.fetchFavorites();
     }
 
     onSubmit = (event) => {
@@ -46,10 +64,20 @@ class Profile extends Component {
     }
 
     render () {
-
+        const favList = this.state.favList.map(drink =>{
+            return(
+                <div>
+                    <Link to={`/drink/${drink.drinkID}`}>
+                        {drink.name}
+                    </Link>
+                                                              
+                </div>
+                
+            )
+        })
     return (
-        <div>
-            <div className="profile">
+    <div>
+        <div className="profile">
             <h1> Profile:</h1>
             <p> {this.state.username} </p>
             <form onSubmit={this.onSubmit}>
@@ -76,8 +104,14 @@ class Profile extends Component {
                     type="submit" 
                     value="Submit Changes" />
             </form>
-            </div>
         </div>
+        <div>
+            <form>
+                <h1>Favorite List:</h1>
+                {favList} 
+            </form>            
+        </div>
+    </div>
     )
 }
 }
