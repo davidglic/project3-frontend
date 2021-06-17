@@ -49,15 +49,34 @@ class Profile extends Component {
 
     return (
         <div>
+            <div className="profile">
             <h1> Profile:</h1>
-            <div>Username: {this.state.username}</div>
+            <p> {this.state.username} </p>
             <form onSubmit={this.onSubmit}>
-                name:<input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
-                password:<input type="password"  name="password" value={this.state.password} onChange={this.handleChange}/>
-                email:<input type="text" name="email" value={this.state.email} onChange={this.handleChange}/>
-                <input type="submit" value="Submit Changes" />
+                name:<input 
+                    className="button-head"
+                    type="text" 
+                    name="name" 
+                    value={this.state.name} 
+                    onChange={this.handleChange}/> <br></br>
+                password:<input 
+                    className="button-head"
+                    type="password"  
+                    name="password" 
+                    value={this.state.password} 
+                    onChange={this.handleChange}/> <br></br>
+                email:<input 
+                    className="button-head"
+                    type="text" 
+                    name="email" 
+                    value={this.state.email} 
+                    onChange={this.handleChange}/> <br></br>
+                <input 
+                    className="button-head"
+                    type="submit" 
+                    value="Submit Changes" />
             </form>
-            
+            </div>
         </div>
     )
 }

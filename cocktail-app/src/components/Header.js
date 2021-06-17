@@ -36,9 +36,20 @@ class Header extends Component{
         <div className="head-right">
             <div className="login-container">
                 <form onSubmit={this.props.onLogin}>
-                    <input type="text" placeholder="Username" name="username" />
-                    <input type="password" placeholder="password" name="password" />
-                    <input type="submit" value="Login" />
+                    <input 
+                        className="button-head"
+                        type="text" 
+                        placeholder="Username" 
+                        name="username" />
+                    <input
+                        className="button-head" 
+                        type="password" 
+                        placeholder="password" 
+                        name="password" />
+                    <input
+                        className="button-head" 
+                        type="submit" 
+                        value="Login" />
                 </form>
             </div>
             <Link

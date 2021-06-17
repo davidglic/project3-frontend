@@ -33,11 +33,14 @@ class Drink extends Component {
         {this.state.recievedDrink &&
         <div>
             <h1>{this.state.drink.strDrink} </h1> <br></br>
-            <img src={this.state.drink.strDrinkThumb} height="300px"/>
+            <img 
+                className="pics"
+                src={this.state.drink.strDrinkThumb}
+            />
         <div className="container">    
             <div className="ingredientContainer">
                 <h3>Glass:</h3>
-                <p className="ingredients">{this.state.drink.strGlass}</p>
+                <p className="instructions">{this.state.drink.strGlass}</p>
                 <h3>Ingredients:</h3>
                 <ul className="ingredients"> 
                     {this.state.drink.strIngredient1 != null &&

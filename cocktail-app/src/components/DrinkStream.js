@@ -32,7 +32,9 @@ class DrinkStream extends Component {
             <Link
                 to={`/drink/${drinks.idDrink}`}>
             <div className="each">
-                <img src= {drinks.strDrinkThumb} height="200px"/>
+                <img 
+                    className="pics"
+                    src= {drinks.strDrinkThumb}/>
                 <p>{drinks.strDrink}</p>
             </div>
             </Link>               

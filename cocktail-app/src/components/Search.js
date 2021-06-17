@@ -21,21 +21,17 @@ class Search extends Component {
     render () {
     return (
         <div>
-            <h1> Search:</h1>
-            <input
+            <input  className="button"
                     type="text"
                     name="searchBar"
                     value={this.state.searchBar}
                     placeholder="search"
                     onChange={this.handleChange}/>  
                 <input
+                    className="button"
                     type="submit"
                     value="Search!"
-                    onClick={() => this.props.searchDrinks(this.state.searchBar)}
-                    />
-                    
-
-        <div>Search Results:</div>
+                    onClick={() => this.props.searchDrinks(this.state.searchBar)}/>            
         </div>
     )
 }

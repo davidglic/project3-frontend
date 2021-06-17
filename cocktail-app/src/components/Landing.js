@@ -16,7 +16,7 @@ class Landing extends Component {
         <div>
             <h1> Welcome to the Cocktail App.</h1>
             <p>Login or sign up above to search the library.</p> 
-            <p>A sample search for margaritas</p>
+            <p>A sample search for margaritas:</p>
         
         </div>
     )

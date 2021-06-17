@@ -46,41 +46,48 @@ class Signup extends Component{
 render () {
     return(
         <div>
-            
+            <div className="signupInfo">
             <h2>Create a new account.</h2>
             
             <form onSubmit={this.handleSubmit}>
                 Username: <input
+                    className="button-head"
                     type="text"
                     name="username"
                     /><br/>
                     
                 Password: <input
+                    className="button-head"
                     type="password"
                     name="password"
                     /><br/>
                 Confirm Password: <input
+                    className="button-head"
                     type="password"
                     name="password2"
                     /><br/>
                 Full Name: <input
+                    className="button-head"
                     type="text"
                     name="name"
                     /><br/>
                E-Mail: <input
+                    className="button-head"
                     type="text"
                     name="email"
                     /> <br/>
                 Confirm E-mail : <input
+                    className="button-head"
                     type="text"
                     name="email2"
                     /> <br/>  
                 <input
+                    className="button-head"
                     type="submit"
-                    value="Sign Up!"/>
-                    
+                    value="Sign Up!"/>                  
 
             </form>
+            </div>
         </div>
     )
 }
