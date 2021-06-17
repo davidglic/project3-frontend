@@ -167,7 +167,12 @@ class App extends Component {
         />
         <Route
           path="/profile/:username"
-          render={(props) => <Profile {...props} username={this.state.username} updateState={this.updateState} updateFavs={this.updateFavs}/>}
+          render={(props) => 
+          <Profile {...props} 
+          username={this.state.username} 
+          updateState={this.updateState} 
+          updateFavs={this.updateFavs} 
+          onLogout={this.onLogout}/>}
         />
         {/* <Route
           path="/drinkstream"

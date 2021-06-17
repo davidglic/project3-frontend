@@ -64,6 +64,14 @@ class Profile extends Component {
             })
         
     }
+    handleDeleteUser = (event) => {
+        event.preventDefault()
+        axios.delete(`http://localhost:3001/user/${this.props.match.params.id}`)
+        .then(() =>{
+            this.props.onLogout()
+            this.props.histpry.push('/')
+        })
+    }
 
     render () {
         const favList = this.state.favList.map(drink =>{
@@ -104,8 +112,13 @@ class Profile extends Component {
                 <input 
                     className="button-head"
                     type="submit" 
-                    value="Submit Changes" />
+                    value="Submit Changes" /> <br></br>
             </form>
+            <input 
+                    className="button-head"
+                    type="submit" 
+                    value="Delete Profile" 
+                    onClick={this.handleDeleteUser}/>
         </div>
         <div>
             <form>
