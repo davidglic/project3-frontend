@@ -26,7 +26,7 @@ The Cocktail App is a React based application that features cocktail recipes, a 
     - React / ReactRouter
     - Java Script / CSS
     - Axios
-    - <a href="https://www.thecocktaildb.com/api.php">TheCocktailDB</a> external API
+    - TheCocktailDB API
 
 ## Screenshots
 
