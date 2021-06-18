@@ -13,7 +13,7 @@ class Landing extends Component {
     }
     render () {
     return (
-        <div>
+        <div className="landing-text search-container">
             <h1> Welcome to the Cocktail App.</h1>
             <p>Login or sign up above to search the library.</p> 
             <p>A sample search for margaritas:</p>

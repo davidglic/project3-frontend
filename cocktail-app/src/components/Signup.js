@@ -45,8 +45,8 @@ class Signup extends Component{
 
 render () {
     return(
-        <div>
-            <div className="signupInfo">
+        <div className="signup-container">
+            <div className="signupInfo search-container">
             <h2>Create a new account.</h2>
             
             <form onSubmit={this.handleSubmit}>

@@ -12,17 +12,19 @@ class Header extends Component{
     render () {
         return (
             
-        <div>
+        <div className="header-container">
             {this.props.loggedIn === true ?
                 <div className="header">
                     <div className="head-left">
                 <h1 className="title">Cocktail App</h1>
                 <Link to="/search">Search</Link>
+                <span>  ---  </span>
+                <Link to={`/profile/${this.props.username}`}>Profile</Link>
             </div>
         <div className="head-right">
             <div className="login-container">
-                <h4>Welcome, {this.props.name}</h4>
-                <Link to={`/profile/${this.props.username}`}>Profile</Link><br/>
+                <h4 className="title">Welcome, {this.props.name}</h4>
+                
                 <Link onClick={this.props.onLogout}>Logout</Link>
             </div>
         </div>

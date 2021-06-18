@@ -168,6 +168,7 @@ class App extends Component {
           onLogout={this.onLogout}
           
         />
+        <div className="content">
         <Route
           path="/"
           exact render={() => 
@@ -219,6 +220,7 @@ class App extends Component {
           />
         }
         />
+        </div>
       </div>
     );
   }

@@ -85,7 +85,7 @@ class Profile extends Component {
         })
     return (
     <div className="info">
-        <div className="profile">
+        <div className="profile search-container">
             <h1> Profile:</h1>
             <p> {this.state.username} </p>
             <form onSubmit={this.onSubmit}>
@@ -119,7 +119,7 @@ class Profile extends Component {
                     onClick={this.handleDeleteUser}>Delete User?</button>
         </div>
         <div>
-            <form className="favs">
+            <form className="favs search-container">
                 <h1>Favorite List:</h1>
                 {favList} 
             </form>            

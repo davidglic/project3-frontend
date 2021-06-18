@@ -48,8 +48,9 @@ class Search extends Component {
     render () {
         
     return (
-        <div>
-            <h3>Search by Drink Name:</h3>
+        <div className="search-container">
+            <button value="Random Drink" onClick={this.props.searchRandom} className="button">Random Drink</button>
+            <h3 className="search-title">Search by Drink Name:</h3>
             <input  className="button"
                     type="text"
                     name="searchBar"
@@ -61,7 +62,7 @@ class Search extends Component {
                     type="submit"
                     value="Search!"
                     onClick={() => this.props.searchDrinks(this.state.searchBar)}/>
-            <h3>Search by ingredient:</h3>
+            <h3 className="search-title">Search by ingredient:</h3>
             <input  className="button"
                     type="text"
                     name="searchIng"
@@ -73,9 +74,9 @@ class Search extends Component {
                     type="submit"
                     value="Search!"
                     onClick={() => this.props.searchIngredients(this.state.searchIng)}/>
-            <h3>Search by First Letter of Drink:</h3>
+            <h3 className="search-title">Search by First Letter of Drink:</h3>
             <RenderLetters letterClick={this.letterClick}/>
-            <button value="Random Drink" onClick={this.props.searchRandom}>Random Drink</button>
+            
         </div>
     )
 }
