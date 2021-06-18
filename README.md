@@ -16,10 +16,10 @@ The Cocktail App is a React based application that features cocktail recipes, a 
 ## Future Features Planned
 
     - Allow users to save multiple lists, or menus, of cocktails.
-    - Add fully persitent sessions with JWT user auth on backend.
+    - Add fully persistent sessions with JWT user auth on backend.
     - Printable/Exportable cocktail menus.
     - Images on favorites list.
-    - Comments on indivdual cocktails.
+    - Comments on individual cocktails.
 
 ## Technology Used
 
