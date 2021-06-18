@@ -2,15 +2,11 @@ import React,{Component} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 
-// function generateLetters() {
-//     let letters = []
-//     for (let i=65; i < 91; i++) {
-        
-//         letters.push(String.fromCharCode(i))
-//     }
-//     return letters
-// }
+
 function RenderLetters(props) {
+    //generates <div>A</div> to Z with onClick link to trigger API and update. returns a list of div elements.
+    //requires letterClick function from parent element.
+
     let letters = []
     for (let i=65; i < 91; i++) {
         let letter = String.fromCharCode(i)
@@ -39,9 +35,8 @@ class Search extends Component {
         
     }
     letterClick = (letter) => {
+        //pass search letter up to parent to call API and update drinkStream
         this.props.searchDrinksLetter(letter)
-        // console.log(letter)
-
     }
     
 
@@ -56,25 +51,31 @@ class Search extends Component {
                     name="searchBar"
                     value={this.state.searchBar}
                     placeholder="search"
-                    onChange={this.handleChange}/>  
+                    onChange={this.handleChange}/> 
+
                 <input
                     className="button"
                     type="submit"
                     value="Search!"
                     onClick={() => this.props.searchDrinks(this.state.searchBar)}/>
+
             <h3 className="search-title">Search by ingredient:</h3>
+
             <input  className="button"
                     type="text"
                     name="searchIng"
                     value={this.state.searchIng}
                     placeholder="search"
-                    onChange={this.handleChange}/>  
+                    onChange={this.handleChange}/> 
+                    
                 <input
                     className="button"
                     type="submit"
                     value="Search!"
                     onClick={() => this.props.searchIngredients(this.state.searchIng)}/>
+
             <h3 className="search-title">Search by First Letter of Drink:</h3>
+
             <RenderLetters letterClick={this.letterClick}/>
             
         </div>

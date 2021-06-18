@@ -7,13 +7,13 @@ class Header extends Component{
         super (props)
     }
 
-    
-
     render () {
         return (
             
         <div className="header-container">
             {this.props.loggedIn === true ?
+            //logged in display
+
                 <div className="header">
                     <div className="head-left">
                 <h1 className="title">Cocktail App</h1>
@@ -30,6 +30,8 @@ class Header extends Component{
         </div>
                 </div>  
             :
+            //logged out display
+
                 <div className="header">
                     <div className="head-left">
                 <h1 className="title">Cocktail App</h1>

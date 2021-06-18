@@ -5,25 +5,11 @@ import {Link} from "react-router-dom";
 class DrinkStream extends Component {
     constructor (props) {
         super (props)
-        
-        this.state = {
-            drinks:[]
-        }
-
     }
 
-    // componentDidMount = () => {
-    //     axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-    //     .then(response => {
-    //         this.setState({
-    //             drinks:response.data.drinks
-    //         })
-    //     })
-    // }
-
-
     render () {
-        console.log(this.state.drinks)
+    
+    //loop through and render each drink in state with picture and name, linked to cocktailDB ID.
     return (
         <div>
             <div className="container">

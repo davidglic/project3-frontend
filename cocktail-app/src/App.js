@@ -1,3 +1,5 @@
+//imports
+
 import './App.css';
 import {Link, Route, withRouter} from "react-router-dom";
 import Header from './components/Header';
@@ -8,11 +10,8 @@ import DrinkStream from './components/DrinkStream';
 import Search from './components/Search';
 import Drink from './components/Drink';
 import React, { Component } from 'react';
-import apiKey from './resources/keys'
+import apiKey from './resources/keys' //apikey stored here if not using free. this folder is in .gitignore for security.
 import axios from 'axios';
-
-
-
 
 
 class App extends Component {
@@ -28,12 +27,13 @@ class App extends Component {
   }
 
   onLogin = (event) => {
+    //handle login event. pass password as object {password: ''}, and username as a param.
+
     event.preventDefault()
     
     const params = {password: event.target.password.value}
     
     axios.put(`http://localhost:3001/user/login/${event.target.username.value}`, params)
-
       .then(response => {
         this.setState({
           name: response.data.name,
@@ -45,8 +45,11 @@ class App extends Component {
 
       )
   }
+
   onLogout = (event) => {
-    if (event) {event.preventDefault()}
+    // handle log out. Clear state and push to home page.
+
+    if (event) {event.preventDefault()} //only needs to run on login event, on delete user will throw error.
     this.setState({
       name: '',
       username: '',
@@ -56,7 +59,10 @@ class App extends Component {
     })
     this.props.history.push('/')
   }
+
   updateState = (username, name) => {
+    //updates session state, used for profile updates, new user creations, etc.
+
     this.setState({
       username: username,
       name: name,
@@ -65,12 +71,16 @@ class App extends Component {
   }
 
   updateFavs = (list) => {
+    //updates fav list. allows fav list to update outside of backend api call.
+
     this.setState({
       favList: list
     })
   }
 
   addFavDrink = (drinkId, drinkName, userName) => {
+    //add drink to favorites, updates backend api and adds drink to fav list in state.
+
     const newDrink = {name: drinkName, drinkID: drinkId}
     axios.post(`http://localhost:3001/drink/${userName}`, newDrink)
       .then(response => {
@@ -86,7 +96,8 @@ class App extends Component {
   }
 
   delFavDrink = (drinkId) => {
-    console.log("delete drink called" + drinkId)
+    //Remove drink from favorites, updates backend api and removes drink from fav list in state.
+
     axios.delete(`http://localhost:3001/drink/${drinkId}`)
     .then(response => {
       axios.get(`http://localhost:3001/drink/${this.state.username}`)
@@ -101,9 +112,12 @@ class App extends Component {
   }
 
   searchDrinks = (string) => {
+    //search drinks by name, takes string. updates drinkList in state.
+    //sample API query: https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito
+
          axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${string}`)
         .then(response => {
-          // console.log(response.data.drinks)
+          
           if (response.data.drinks != null) { 
             this.setState({
                   drinkList:response.data.drinks
@@ -113,10 +127,15 @@ class App extends Component {
           }
         })
   }
+
   searchDrinksLetter = (string) => {
+    //search drinks by first letter of name, takes string. updates drinkList in state.
+    //string must be one character or external API will reject.
+    ////sample API query: https://www.thecocktaildb.com/api/json/v1/1/search.php?f=A
+
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${string}`)
         .then(response => {
-          // console.log(response.data.drinks)
+          
           if (response.data.drinks != null) { 
             this.setState({
                   drinkList:response.data.drinks
@@ -127,10 +146,12 @@ class App extends Component {
         })
   }
   searchIngredients = (string) => {
-    //www.thecocktaildb.com/api/json/v1/1/filter.php?i
+    //search drinks that contain ingredient. takes string.
+    //sample API query: www.thecocktaildb.com/api/json/v1/1/filter.php?i=gin
+
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${string}`)
         .then(response => {
-          // console.log(response.data.drinks)
+          
           if (response.data.drinks != null) { 
             this.setState({
                   drinkList:response.data.drinks
@@ -143,10 +164,11 @@ class App extends Component {
   }
 
   searchRandom = () => {
-    //www.thecocktaildb.com/api/json/v1/1/random.php
+    //search random cocktail from DB. 
+    //sample API query: www.thecocktaildb.com/api/json/v1/1/random.php
+
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(response => {
-          // console.log(response.data.drinks)
           if (response.data.drinks != null) { 
             this.setState({
                   drinkList:response.data.drinks
@@ -160,6 +182,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+        {/* Header Component */}
         <Header 
           name={this.state.name} 
           username={this.state.username} 
@@ -168,7 +192,10 @@ class App extends Component {
           onLogout={this.onLogout}
           
         />
-        <div className="content">
+        
+        <div className="content"> {/* content container for styling. */}
+        
+        {/* Landing page with DrinkStream for expample. */}
         <Route
           path="/"
           exact render={() => 
@@ -178,10 +205,18 @@ class App extends Component {
           </div> 
         }
         />
+
+        {/* User Signup Page */}
         <Route
           path ="/signup"
-          render={(props) => <Signup username={this.state.username} loggedIn={this.state.loggedIn} {...props} updateState={this.updateState}/>}
+          render={(props) => <Signup 
+            username={this.state.username} 
+            loggedIn={this.state.loggedIn} 
+            {...props} 
+            updateState={this.updateState}/>}
         />
+
+        {/* User Profile Page */}
         <Route
           path="/profile/:username"
           render={(props) => 
@@ -191,11 +226,9 @@ class App extends Component {
           updateFavs={this.updateFavs} 
           onLogout={this.onLogout}/>}
         />
-        {/* <Route
-          path="/drinkstream"
-          render={() => <DrinkStream drinkList={this.state.drinkList}/>}
-        /> */}
-              <Route
+       
+        {/* Search dialog and DrinkStream for results */}
+        <Route
           path="/search"
           render={(props) => 
           <div>
@@ -209,6 +242,8 @@ class App extends Component {
           </div>
           }
         />
+
+        {/* Individual Drink */}
         <Route
           path="/drink/:id"
           render={(props) => <Drink 

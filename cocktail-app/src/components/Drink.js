@@ -15,7 +15,7 @@ class Drink extends Component {
 
     }
     componentDidMount = () => {
-        
+        //run api call for cocktail details on load.
         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${this.props.match.params.id}`)
         .then(response => {
             
@@ -25,9 +25,13 @@ class Drink extends Component {
             })
         })
     }
-    favID = ''
+    
+    favID = '' //storing favID--from backend API--here allows to manipulate DB without external API call.
+    
     checkFavs = (id) => {
-        
+        //checks to see if drink is in fav List by external API drink ID.
+        //returns true or false.
+
         for (let i=0; i < this.props.favList.length; i++) {
             
             if (this.props.favList[i].drinkID == id) {
@@ -43,7 +47,7 @@ class Drink extends Component {
         
     return (
     <div className="drinkInfo">
-        {this.state.recievedDrink &&
+        {this.state.recievedDrink && 
         <div>
             <h1>{this.state.drink.strDrink} </h1> <br></br>
             <img 
@@ -142,7 +146,9 @@ class Drink extends Component {
             </div>
             }
             {this.checkFavs(this.state.drink.idDrink) 
-            ? <button className="button"
+
+            
+            ? <button className="button" 
             onClick={() => this.props.delFavDrink(this.favID)}>Remove from Favorites</button>
             : <button className="button"
             onClick={() => this.props.addFavDrink(this.state.drink.idDrink, this.state.drink.strDrink, this.props.username)}>Add to Favorites</button>}

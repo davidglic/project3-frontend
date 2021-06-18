@@ -19,18 +19,22 @@ class Signup extends Component{
             alert("Passwords do not match")
             return
         }
+        
+        //check if username exists.
         axios.get(`http://localhost:3001/user/${event.target.username.value}`)
             .then(resp => {
                 if (resp.data === null) {
+                    
                     const newUser = {
                         name: event.target.name.value,
                         username: event.target.username.value,
                         password: event.target.password.value,
                         email: event.target.email.value
                     }
+
+                    //post new user to backend.
                     axios.post(`http://localhost:3001/user/new`, newUser)
                         .then(response => {
-                            console.log(response.data)
                             this.props.updateState(response.data.username, response.data.name)
                             this.props.history.push(`/profile/${response.data.username}`)
                         }).catch(err => {

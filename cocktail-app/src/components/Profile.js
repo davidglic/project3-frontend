@@ -16,8 +16,7 @@ class Profile extends Component {
     }
     
     handleChange = (event) => {
-        console.log(event.target.name)
-        console.log(event.target.value)
+
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -25,9 +24,11 @@ class Profile extends Component {
     }
 
     fetchProfile = () => {
+        //fetch user data from backend.
+        
         axios.get(`http://localhost:3001/user/${this.props.username}`)
             .then(resp => {
-                console.log(resp.data)
+               
                 this.setState({
                     name: resp.data.name,
                     username: resp.data.username,
@@ -39,6 +40,8 @@ class Profile extends Component {
     }
 
     fetchFavorites = () => {
+        //fetch favorites from backend.
+
         axios.get(`http://localhost:3001/drink/${this.props.username}`)
         .then(resp => {
             
@@ -51,20 +54,25 @@ class Profile extends Component {
     }
 
     componentDidMount =() => {
+
         this.fetchProfile();
         this.fetchFavorites();
     }
 
     onSubmit = (event) => {
+        //update backend API with edited info then update state with new.
+
         event.preventDefault()
         axios.put(`http://localhost:3001/user/${this.props.username}`, this.state)
             .then(resp => {
-                console.log(resp.data)
+                
                 this.props.updateState(this.state.username, this.state.name)
             })
         
     }
     handleDeleteUser = () => {
+        //delete and logout user. 
+
         axios.delete(`http://localhost:3001/user/${this.props.username}`)
         .then(() =>{
             this.props.onLogout()

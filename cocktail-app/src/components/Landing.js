@@ -9,7 +9,7 @@ class Landing extends Component {
     }
 
     componentDidMount() {
-        this.props.searchDrinks("margarita")
+        this.props.searchDrinks("margarita") //sample search for landing here
     }
     render () {
     return (
