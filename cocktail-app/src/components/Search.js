@@ -48,7 +48,7 @@ class Search extends Component {
     render () {
         
     return (
-        <div className="search-container">
+        <div className="search-container search">
             <button value="Random Drink" onClick={this.props.searchRandom} className="button">Random Drink</button>
             <h3 className="search-title">Search by Drink Name:</h3>
             <input  className="button"

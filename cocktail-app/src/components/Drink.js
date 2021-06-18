@@ -42,19 +42,19 @@ class Drink extends Component {
         
         
     return (
-    <div>
+    <div className="drinkInfo">
         {this.state.recievedDrink &&
         <div>
             <h1>{this.state.drink.strDrink} </h1> <br></br>
             <img 
-                className="pics"
+                className="drink-pic"
                 src={this.state.drink.strDrinkThumb}
             />
         <div className="container">    
             <div className="ingredientContainer">
-                <h3>Glass:</h3>
-                <p className="instructions">{this.state.drink.strGlass}</p>
-                <h3>Ingredients:</h3>
+                <h3 className="drinkTitle">Glass:</h3>
+                <p className="glass">{this.state.drink.strGlass}</p>
+                <h3 className="drinkTitle">Ingredients:</h3>
                 <ul className="ingredients"> 
                     {this.state.drink.strIngredient1 != null &&
                     <li>
@@ -134,7 +134,7 @@ class Drink extends Component {
                 </ul> 
             </div>
             <div className="instructionContainer">
-                <h3>Instructions:</h3>
+                <h3 className="drinkTitle">Instructions:</h3>
                 <p className="instructions">{this.state.drink.strInstructions}</p>
             </div> 
         </div> 
@@ -142,8 +142,10 @@ class Drink extends Component {
             </div>
             }
             {this.checkFavs(this.state.drink.idDrink) 
-            ? <button onClick={() => this.props.delFavDrink(this.favID)}>Remove from Favorites</button>
-            : <button onClick={() => this.props.addFavDrink(this.state.drink.idDrink, this.state.drink.strDrink, this.props.username)}>Add to Favorites</button>}
+            ? <button className="button"
+            onClick={() => this.props.delFavDrink(this.favID)}>Remove from Favorites</button>
+            : <button className="button"
+            onClick={() => this.props.addFavDrink(this.state.drink.idDrink, this.state.drink.strDrink, this.props.username)}>Add to Favorites</button>}
             
         </div>
     )
