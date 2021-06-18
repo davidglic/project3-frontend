@@ -31,10 +31,13 @@ The Cocktail App is a React based application that features cocktail recipes, a 
 ## Screenshots
 
 Profile Page
+<img src="https://raw.githubusercontent.com/davidglic/project3-frontend/main/screenshots/screen-profile.png" style="width: 800px;"/>
 
 Search Page
+<img src="https://raw.githubusercontent.com/davidglic/project3-frontend/main/screenshots/screen-search.png" style="width: 800px;"/>
 
 Drink Page
+<img src="https://raw.githubusercontent.com/davidglic/project3-frontend/main/screenshots/screen-drink.png" style="width: 800px;"/>
 
 ## Components
 
